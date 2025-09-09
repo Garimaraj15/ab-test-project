@@ -2,97 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>A/B Test</title>
+  <title>A/B Test App</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f9fafb;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-    .card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 40px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      font-family: Arial, sans-serif;
+      margin: 40px;
       text-align: center;
+      background: #f9f9f9;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
       max-width: 400px;
-      width: 100%;
+      margin: auto;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
     }
-    h1 {
-      margin-bottom: 10px;
-      font-size: 28px;
-      color: #111827;
-    }
-    p {
-      margin-bottom: 25px;
-      font-size: 16px;
-      color: #374151;
+    input, select, button {
+      margin: 10px 0;
+      padding: 10px;
+      width: 90%;
+      border-radius: 5px;
+      border: 1px solid #ccc;
     }
     button {
-      font-size: 18px;
-      padding: 14px 28px;
-      border: none;
-      border-radius: 12px;
+      background: #007BFF;
+      color: white;
       cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-      width: 100%;
     }
     button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      background: #0056b3;
     }
-    .gray {
-      background-color: #6b7280;
-      color: white;
-    }
-    .green {
-      background-color: #16a34a;
-      color: white;
+    .success {
+      color: green;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Join Our Platform</h1>
-    <p>Be a part of something exciting. Try our new signup experience!</p>
-    <button id="cta">Loading...</button>
+  <div class="container">
+    <h2>🚀 A/B Test Logging</h2>
+    <form method="POST" action="/log">
+      <input type="text" name="user_id" placeholder="Enter User ID" required>
+      
+      <select name="variant" required>
+        <option value="">-- Select Variant --</option>
+        <option value="A">Variant A</option>
+        <option value="B">Variant B</option>
+      </select>
+      
+      <button type="submit">Log Event</button>
+    </form>
+
+    <p>🔍 <a href="/show" target="_blank">View Logged Data</a></p>
   </div>
-
-  <script>
-    // Randomly assign variant
-    const variant = Math.random() < 0.5 ? "A" : "B";
-    const btn = document.getElementById("cta");
-
-    if (variant === "A") {
-      btn.textContent = "Sign Up";
-      btn.className = "gray";
-    } else {
-      btn.textContent = "Get Started — Free";
-      btn.className = "green";
-    }
-
-    // Log impression
-    fetch('/log', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({variant, event: 'impression'})
-    });
-
-    // Log conversion on click
-    btn.addEventListener("click", () => {
-      fetch('/log', {
-        method: 'POST',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({variant, event: 'conversion'})
-      }).then(() => {
-        alert("✅ Thanks! Your response has been recorded.");
-      });
-    });
-  </script>
 </body>
 </html>
