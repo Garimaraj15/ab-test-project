@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 # Railway MySQL PUBLIC connection (use proxy URL)
 db_config = {
-    "host": os.getenv("MYSQLHOST", "trolley.proxy.rlwy.net:10071"),
+    "host": os.getenv("MYSQLHOST", "trolley.proxy.rlwy.net"),
     "user": os.getenv("MYSQLUSER", "root"),
     "password": os.getenv("MYSQLPASSWORD", "DTKsaZtDcENPGOcvTDLisOFpwnKKFltg"),
     "database": os.getenv("MYSQLDATABASE", "railway"),
