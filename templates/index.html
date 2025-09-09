@@ -4,57 +4,24 @@
   <meta charset="UTF-8">
   <title>A/B Test App</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      text-align: center;
-      background: #f9f9f9;
-    }
-    .container {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 400px;
-      margin: auto;
-      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-    }
-    input, select, button {
-      margin: 10px 0;
-      padding: 10px;
-      width: 90%;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 100px; }
     button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
       background: #007BFF;
       color: white;
       cursor: pointer;
     }
-    button:hover {
-      background: #0056b3;
-    }
-    .success {
-      color: green;
-      font-weight: bold;
-    }
+    button:hover { background: #0056b3; }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h2>🚀 A/B Test Logging</h2>
-    <form method="POST" action="/log">
-      <input type="text" name="user_id" placeholder="Enter User ID" required>
-      
-      <select name="variant" required>
-        <option value="">-- Select Variant --</option>
-        <option value="A">Variant A</option>
-        <option value="B">Variant B</option>
-      </select>
-      
-      <button type="submit">Log Event</button>
-    </form>
-
-    <p>🔍 <a href="/show" target="_blank">View Logged Data</a></p>
-  </div>
+  <h1>🚀 A/B Test Experiment</h1>
+  <form method="POST" action="/signup">
+    <button type="submit">Click to Sign Up</button>
+  </form>
+  <p>🔍 <a href="/show" target="_blank">View Logged Data</a></p>
 </body>
 </html>
